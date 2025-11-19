@@ -14,9 +14,15 @@ export class RecipeListComponent implements OnInit {
   constructor(private recipeService: RecipeService) {
   }
 
+
   ngOnInit() {
     this.recipeService.getRecipes().subscribe({
       next: (data) => this.recipes = data
-    })
+    });
+  }
+
+  // 🔸 Función para contar ingredientes
+  ingredientCount(recipe: Recipe): number {
+    return recipe.ingredientes?.length ?? 0;
   }
 }

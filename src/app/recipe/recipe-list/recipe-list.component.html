@@ -8,6 +8,7 @@
           <li *ngFor="let tag of recipe.etiquetas">• {{ tag }}</li>
         </ul>
         <p class="card-text"><strong>Porciones:</strong> {{ recipe.porciones }}</p>
+        <p class="card-text"><strong># Ingredientes:</strong> {{ ingredientCount(recipe) }}</p>
         <a [routerLink]="['/recipe', recipe.id]" class="btn btn-primary">Ver la receta</a>
       </div>
     </div>

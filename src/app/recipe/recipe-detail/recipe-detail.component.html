@@ -15,6 +15,7 @@
 </table>
 
 <h4>Ingredientes</h4>
+<p class="fst-italic" *ngIf="mostUsedIngredient()">Ingrediente más usado: {{ mostUsedIngredient() }}</p>
 <ul class="list-group mb-4">
   <li class="list-group-item" *ngFor="let ing of recipe?.ingredientes">
     {{ ing.nombre }} - {{ ing.cantidad }} {{ ing.unidad }}
