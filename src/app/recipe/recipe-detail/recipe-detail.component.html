@@ -1,23 +1,29 @@
-<div class="recipe-detail">
-  <h2>{{ recipe.nombre }}</h2>
-  <img
-    class="recipe-detail-img"
-    [src]="recipe.imagen"
-    alt="{{ recipe.imagen }}"
-  />
-  <p><strong>Porciones:</strong> {{ recipe.porciones }}</p>
-  <p><strong>Tiempo:</strong> {{ recipe.tiempo_minutos }} min</p>
-  <h3>Ingredientes</h3>
-  <app-ingredient-list
-    [ingredients]="recipe.ingredientes"
-  ></app-ingredient-list>
+<h2>{{ recipe?.nombre }}</h2>
+<img [src]="recipe?.imagen" class="img-fluid rounded mb-3" [alt]="recipe?.nombre">
 
-  <h3>Pasos</h3>
-  <ol>
-    @for(step of recipe.pasos; track step){
-    <li>
-      {{ step }}
-    </li>
-    }
-  </ol>
-</div>
+<table class="table table-sm">
+  <tbody>
+  <tr>
+    <td><strong>Porciones:</strong> {{ recipe?.porciones }}</td>
+    <td><strong>Tiempo:</strong> {{ recipe?.tiempo_minutos }} min</td>
+  </tr>
+  <tr>
+    <td><strong>Dificultad:</strong> {{ recipe?.dificultad }}</td>
+    <td><strong>Tipo:</strong> {{ recipe?.tipo }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<h4>Ingredientes</h4>
+<ul class="list-group mb-4">
+  <li class="list-group-item" *ngFor="let ing of recipe?.ingredientes">
+    {{ ing.nombre }} - {{ ing.cantidad }} {{ ing.unidad }}
+  </li>
+</ul>
+
+<h4>Pasos</h4>
+<ol class="list-group list-group-numbered mb-4">
+  <li class="list-group-item" *ngFor="let paso of recipe?.pasos">{{ paso }}</li>
+</ol>
+
+<button class="btn btn-outline-secondary" routerLink="/recipe">Regresar</button>
